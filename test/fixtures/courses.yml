@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  prerequisite: MyString
+  likes: 1
+  dislikes: 1
+
+two:
+  name: MyString
+  prerequisite: MyString
+  likes: 1
+  dislikes: 1
