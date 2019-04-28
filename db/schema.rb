@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190428062005) do
+ActiveRecord::Schema.define(version: 20190428063544) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20190428062005) do
     t.string "prerequisite"
     t.integer "likes"
     t.integer "dislikes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
