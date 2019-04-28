@@ -3,11 +3,13 @@
 one:
   name: MyString
   prerequisite: MyString
+  coordinator_id: 1
   likes: 1
   dislikes: 1
 
 two:
   name: MyString
   prerequisite: MyString
+  coordinator_id: 1
   likes: 1
   dislikes: 1

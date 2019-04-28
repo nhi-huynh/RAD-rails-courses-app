@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :coordinator_id %>
+    <%= form.number_field :coordinator_id, id: :course_coordinator_id %>
+  </div>
+
+  <div class="field">
     <%= form.label :likes %>
     <%= form.number_field :likes, id: :course_likes %>
   </div>
