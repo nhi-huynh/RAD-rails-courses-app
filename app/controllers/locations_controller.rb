@@ -21,6 +21,12 @@ class LocationsController < ApplicationController
   def edit
   end
 
+  # GET /locations/1/courses_hosted
+  def courses_hosted
+    @location = Location.find(params[:id])
+    @courses = @location.courses
+  end
+
   # POST /locations
   # POST /locations.json
   def create
@@ -72,3 +78,4 @@ class LocationsController < ApplicationController
       params.require(:location).permit(:location)
     end
 end
+

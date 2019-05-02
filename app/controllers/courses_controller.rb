@@ -20,7 +20,51 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
   end
+  
+  
+  # GET /courses/1/locations
+  def locations 
+    @course = Course.find(params[:id])
+    @locations = @course.locations
+  end
 
+
+  # POST /courses/1/location_add?location_id=1
+  def course_add
+    #Convert ids from routing to objects
+    @course = Course.find(params[:id])
+    @location = Location.find(params[:course])
+    
+    unless @course.hosted_in?(@location)
+      #add course to list using << operator
+      @course.locations << @location
+      flash[:notice] = "Course was successfully hosted in #{@location.location}"
+    else
+      flash[:error] = "Course was already hosted in #{@location.location}"
+    end
+      redirect_to action: "locations", id: @course
+  end
+  
+  # POST /courses/1/location_remove?location_id=1
+  def course_remove
+    #Convert ids from routing to object
+    @course = Course.find(params[:id])
+    
+    #get list of courses to remove from query string
+    location_ids = params[:locations]
+    if location_ids.any?
+      location_ids.each do |location_id|
+        location = Location.find(location_id)
+        if @course.hosted_in?(location)
+          logger.info "Removing course from location #{location.id}"
+          @course.locations.delete(location)
+          flash[:notice] = 'Location was successfully deleted'
+        end
+      end
+    end
+    redirect_to action: "locations", id: @course
+  end
+  
   # POST /courses
   # POST /courses.json
   def create

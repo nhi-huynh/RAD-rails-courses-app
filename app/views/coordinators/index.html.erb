@@ -14,4 +14,9 @@
         <p></p>
     </div>
   </div>
+  <td><%= link_to 'Show', coordinator %></td>
+  <td><%= link_to 'Edit', edit_coordinator_path(coordinator) %></td>
+  <td><%= link_to 'Destroy', coordinator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <% end %>
+
+<p><%= link_to 'New Coordinator', new_coordinator_path %></p>

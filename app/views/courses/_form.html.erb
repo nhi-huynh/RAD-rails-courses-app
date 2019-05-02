@@ -23,7 +23,8 @@
 
   <div class="field">
     <%= form.label :coordinator_id %>
-    <%= form.number_field :coordinator_id, id: :course_coordinator_id %>
+    <%= form.select :coordinator_id, Coordinator.all.order(:name).collect {|s| [( s.name), s.id]}%>
+    <%#= form.number_field :coordinator_id, id: :course_coordinator_id %>
   </div>
 
   <div class="field">

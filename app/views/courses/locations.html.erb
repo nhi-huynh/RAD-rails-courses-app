@@ -1,0 +1,17 @@
+<h1> <%= @student.name %>'s courses </h1>
+    <% if @courses.length > 0 %>
+        <%= form_tag( course_remove_student_path(@student)) do %>
+        <table>
+            <thead>
+                <tr>
+                    <th> Course </th>
+                    <th> Remove? </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for course in @courses do %>
+                    <tr> <td> <%= course.name %> </td>
+                    <td> <%= check_box_tag "courses[]", course.id %> </td> </tr>
+                <% end %>
+            </tbody>
+</table > <br />

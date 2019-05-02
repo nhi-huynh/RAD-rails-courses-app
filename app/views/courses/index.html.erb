@@ -19,7 +19,7 @@
       <tr>
         <td><%= course.name %></td>
         <td><%= course.prerequisite %></td>
-        <td><%= course.coordinator_id %></td>
+        <td><%= Coordinator.find(course.coordinator_id).name %></td>
         <td><%= course.likes %></td>
         <td><%= course.dislikes %></td>
         <td><%= link_to 'Show', course %></td>

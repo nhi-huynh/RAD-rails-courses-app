@@ -10,12 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190428063544) do
+ActiveRecord::Schema.define(version: 20190430070943) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_courses", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "course_id", null: false
   end
 
   create_table "coordinators", force: :cascade do |t|
@@ -30,10 +35,21 @@ ActiveRecord::Schema.define(version: 20190428063544) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "prerequisite"
+    t.integer "coordinator_id"
     t.integer "likes"
     t.integer "dislikes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "courses_categories", id: false, force: :cascade do |t|
+    t.integer "course_id", null: false
+    t.integer "category_id", null: false
+  end
+
+  create_table "courses_locations", id: false, force: :cascade do |t|
+    t.integer "course_id", null: false
+    t.integer "location_id", null: false
   end
 
   create_table "locations", force: :cascade do |t|

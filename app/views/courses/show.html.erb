@@ -25,5 +25,14 @@
   <%= @course.dislikes %>
 </p>
 
+<p> 
+  <strong> Locations: </strong >
+  <% if !@course.locations.empty? %>
+    <%= @course.locations.collect {|location| link_to( location.name, location)}.join("\t").html_safe %>
+  <% else %>
+    Not hosted in any locations yet.
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
