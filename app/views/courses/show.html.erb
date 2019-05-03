@@ -12,7 +12,7 @@
 
 <p>
   <strong>Coordinator:</strong>
-  <%= @course.coordinator_id %>
+  <%= Coordinator.find(@course.coordinator_id).name %>
 </p>
 
 <p>
@@ -28,7 +28,7 @@
 <p> 
   <strong> Locations: </strong >
   <% if !@course.locations.empty? %>
-    <%= @course.locations.collect {|location| link_to( location.name, location)}.join("\t").html_safe %>
+    <%= @course.locations.collect {|location| link_to( location.location, location)}.join("\t").html_safe %>
   <% else %>
     Not hosted in any locations yet.
   <% end %>

@@ -21,6 +21,16 @@ class CategoriesController < ApplicationController
   def edit
   end
 
+  # GET /categories/1/courses_category
+  def category_finder
+    @category = Category.find(params[:id])
+  end
+  
+  def courses_hosted
+    @category = Category.find(params[:id])
+    @courses_hosted = @category.courses
+  end
+  
   # POST /categories
   # POST /categories.json
   def create
