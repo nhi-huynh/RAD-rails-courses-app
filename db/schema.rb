@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190430070943) do
+ActiveRecord::Schema.define(version: 20190525080438) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20190430070943) do
     t.integer "dislikes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
   end
 
   create_table "courses_categories", id: false, force: :cascade do |t|
@@ -54,6 +55,14 @@ ActiveRecord::Schema.define(version: 20190430070943) do
 
   create_table "locations", force: :cascade do |t|
     t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

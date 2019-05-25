@@ -26,6 +26,15 @@
 </p>
 
 <p> 
+  <strong> Categories: </strong >
+  <% if !@course.categories.empty? %>
+    <%= @course.categories.collect {|category| link_to( category.category, category)}.join("\t").html_safe %>
+  <% else %>
+    No categories.
+  <% end %>
+</p>
+        
+<p> 
   <strong> Locations: </strong >
   <% if !@course.locations.empty? %>
     <%= @course.locations.collect {|location| link_to( location.location, location)}.join("\t").html_safe %>

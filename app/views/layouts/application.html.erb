@@ -9,7 +9,14 @@
   </head>
 
   <body>
-    <%= render 'navigation' %>
-    <%= yield %>
+    <%= render 'header' %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+      <%= render 'footer' %>
+      <%#= yield %>
+    </div>
   </body>
 </html>
