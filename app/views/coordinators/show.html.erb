@@ -1,4 +1,6 @@
 <h1>Coordinator: <%= @coordinator.name %></h1>
+
+
 <hr />
 <body>
   
@@ -9,34 +11,37 @@
            <div class="col-lg-4 col-md-4 col-sm-12">
            
            </div>
-           <div class="col-lg-8 col-md-8 col-sm-12 desc">
-             <div class="card bg-secondary mb-3" style="max-width: 40rem;">
+           
+        
+           <div class="col-lg-8 col-md-8 col-sm-12">
+            <image src=<%= @coordinator.photo_url %> class="img-circle"></image>
+           </div>
+        
+          </div>
+        <div class="row"> 
+           <div class="col-lg-3 col-md-3 col-sm-12">
+           
+           </div>
+
+          <% @coordinator.courses.each do |course| %>
+            <div class="col-lg-9 col-md-9 col-sm-12 desc">
+             <div class="card bg-info mb-3" style="max-width: 45rem;">
                <div class="card-body">
-                 <!--<h3 class="card-title"><%#= course.name %></h3>   -->
-                 <p class="card-text">
-                 <ul>
-                   <image src=<%= @coordinator.photo_url %> class="img-circle"></image>
-                   
-                   <% @coordinator.courses.each do |course| %>
-                   <div class="col-lg-8 col-md-8 col-sm-12 desc">
-             <div class="card bg-light mb-3" style="max-width: 40rem;">
-               <div class="card-body">
+                 <br/>
                  <h3 class="card-title"><%= course.name %></h3>   
                  <p class="card-text">
+                 <br/>
                  <ul>
-                   <li>
-                      Course name:
+                   <p><strong>
+                      Course name:</strong>
                       <%= course.name %>
-                    </li>
-                    <li> Created at
+                    </p>
+                    <p><strong> Created at:</strong>
                       <%= course.created_at %>
-                    </li>
-                    <li>
-                      Course name:
-                      <%= course.name %>
-                    </li>
+                    </p>
                     
-                    <div class="col-lg-5  pull-right";> 
+                    
+                    <div class="col-lg-3  pull-right";> 
                       <a href="#">
                         <span class="glyphicon glyphicon-thumbs-up"></span>
                       </a>
@@ -46,32 +51,32 @@
                       </a>
                       <span>0</spanp>
                     </div>
-                  </ul>
+                    <br/>
+
                 </p>
+                </ul>
               </div>
             </div>
-                    <!--<li>-->
-                    <!--  Course name:-->
-                    <!--  <%= course.name %>-->
-                    <!--</li>-->
-                    <!--<li> Updated -->
-                    <!--  <%= Time.now.to_datetime %> ago-->
-                    <!--</li>-->
-                    <!--<li>-->
-                    <!--  Course name:-->
-                    <!--  <%= course.name %>-->
-                    <!--</li>-->
+                  
                     <% end %>
-                  </ul>
-                </p>
-              </div>
-            </div>
-          </div>
+         
         </div>
-      <!--<hr />-->
+      <hr />
   </div>
 </body>
 
+
+  <!--<li>-->
+                    <!--  Course name:-->
+                    <!--  <%#= course.name %>-->
+                    <!--</li>-->
+                    <!--<li> Updated -->
+                    <!--  <%#= Time.now.to_datetime %> ago-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--  Course name:-->
+                    <!--  <%#= course.name %>-->
+                    <!--</li>-->
 
 
 
@@ -82,18 +87,18 @@
 
 <!--<p>-->
 <!--  <strong>Name:</strong>-->
-<!--  <%= @coordinator.name %>-->
+<!--  <%#= @coordinator.name %>-->
 <!--</p>-->
 
 <!--<p>-->
 <!--  <strong>Email:</strong>-->
-<!--  <%= @coordinator.email %>-->
+<!--  <%#= @coordinator.email %>-->
 <!--</p>-->
 
 <!--<p>-->
 <!--  <strong>Password digest:</strong>-->
-<!--  <%= @coordinator.password_digest %>-->
+<!--  <%#= @coordinator.password_digest %>-->
 <!--</p>-->
 
-<!--<%= link_to 'Edit', edit_coordinator_path(@coordinator) %> |-->
-<!--<%= link_to 'Back', coordinators_path %>-->
+<!--<%#= link_to 'Edit', edit_coordinator_path(@coordinator) %> |-->
+<!--<%#= link_to 'Back', coordinators_path %>-->

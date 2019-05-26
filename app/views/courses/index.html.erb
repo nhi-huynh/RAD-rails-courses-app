@@ -26,16 +26,16 @@
              <!--<image src="https://img.116s.com/2015-06/15/14343732280007.jpg" class="img-circle"></image>-->
            </div>
            <div class="col-lg-8 col-md-8 col-sm-12 desc">
-             <div class="card bg-light mb-3" style="max-width: 40rem;">
+             <div class="card bg-info mb-3" style="max-width: 50rem;">
                <div class="card-body">
                  <h3 class="card-title"><%= course.name %></h3>   
                  <p class="card-text">
                  <ul>
-                    <li>
-                      Prerequisite:
+                    <p><strong>
+                      Prerequisite:</strong>
                       <%= course.prerequisite %>
-                    </li>
-                    <li>
+                    </p>
+                    <p>
                       <strong> Categories: </strong >
                       <% if !course.categories.empty? %>
                         <%= course.categories.collect {|category| link_to( category.category, category)}.join("\t").html_safe %>
@@ -43,8 +43,8 @@
                         No categories.
                       <% end %>
                       <%#= link_to "Web Development", webProgram_path%>
-                    </li>
-                    <li>
+                    </p>
+                    <p>
                       <strong> Locations: </strong >
                       <% if !course.locations.empty? %>
                         <%= course.locations.collect {|location| link_to( location.location, location)}.join("\t").html_safe %>
@@ -53,13 +53,13 @@
                       <% end %>
                       <%#= link_to "14.10.31", location_14_10_31_path%> 
                       <%#= link_to "14.08.23", location_14_08_23_path%> 
-                    </li>
-                    <li>
-                      Created: 
+                    </p>
+                    <p>
+                      <strong>Created: </strong>
                       15 days ago
-                    </li>
+                    </p>
              
-                    <div class="col-lg-5  pull-right";> 
+                    <div class="col-lg-3  pull-right";> 
                       <a href="#">
                         <span class="glyphicon glyphicon-thumbs-up"></span>
                       </a>
@@ -69,6 +69,7 @@
                       </a>
                       <span>0</spanp>
                     </div>
+                    <br/>
                   </ul>
                 </p>
               </div>
