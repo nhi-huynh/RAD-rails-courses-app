@@ -27,11 +27,16 @@ Rails.application.routes.draw do
   
   # get 'sessions/new'
   # get 'users/new'
+  
+  get 'contact-me', to: 'messages#new', as: 'new_message'
+post 'contact-me', to: 'messages#create', as: 'create_message'
 
   get  '/contact', to: 'application#contact'
   get  '/coordinators',    to: 'coordinator#index'
   get  '/courses',    to: 'courses#index'
-  
+  get  '/admin', to: 'application#admin'
+
+
 
   
 

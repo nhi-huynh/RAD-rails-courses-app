@@ -2,18 +2,18 @@
 <% @locations = Location.all %>
 
 <header class="navbar navbar-fixed-top ">
-  <div class="container">
-    <div id="logo">
+<div class="container">
+<div id="logo">
     <%= link_to "YOURCOURSE", :courses, class: "btn btn-lg btn btn-primary" %>
 </div>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-       <div class="button">
+<nav>
+<ul class="nav navbar-nav navbar-right">
+<div class="button">
    
-           <% if logged_in? %>
+<% if logged_in? %>
          
-          <ul class="nav navbar-nav navbar-right">
-          <div class="btn-group">
+<ul class="nav navbar-nav navbar-right">
+<div class="btn-group">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle btn btn-danger btn-sm glyphicon glyphicon-move" data-toggle="dropdown">
              <%= current_user.name %> 
@@ -30,14 +30,14 @@
             </ul>
           </li>
            <!--<button type="button"class="btn btn-primary">New coursse</button> </div>-->
-           <ul class="nav navbar-nav navbar-right">
+  <ul class="nav navbar-nav navbar-right">
         <!--<li><%= link_to "New courses", courses_path, class:"btn btn-primary btn-sm glyphicon glyphicon-move"%></li>-->
         <a href="../course" target="_parent">
           <button type="button"class="btn btn-primary">New courses</button>
         </a>
         </ul>
            <% else %>
-           <li><%= link_to "Log in", login_path,  class:"btn btn-primary btn-md glyphicon glyphicon-list-alt"%>
+           <li><%= link_to "Log in", login_path,  class:"btn btn-primary btn-md glyphicon glyphicon-list-alt"%></li>
            <% end %>
 
     </div>
@@ -52,28 +52,31 @@
         <!--</ul>-->
         
 <ul class="nav navbar-nav navbar-right">
-    <div class="dropdown">
+<div class="dropdown">
     <button class="btn btn-primary btn-md dropdown-toggle" type="button" data-toggle="dropdown">
     <span class="glyphicon glyphicon-move"></span>Category
     <span class="caret"></span></button>
-    <ul class="dropdown-menu">
+<ul class="dropdown-menu">
       <li><a href="../webProgram">Web Programming</a></li>
       <li><a href="../java">Java</a></li>
       <li><a href="../fullStackDev">Full Stack Dev</a></li>
       <li><a href="../iosEngineering">iOS Engineering</a></li>
-    </ul>
-    </div>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
+</ul>
+</div>
+</ul>
+    
+<ul class="nav navbar-nav navbar-right">
+<div class="dropdown">
     <button class="btn btn-primary btn-md dropdown-toggle" type="button" data-toggle="dropdown">
     <span class="glyphicon glyphicon-send"></span>Locations
     <span class="caret"></span></button>
-    <ul class="dropdown-menu">
+<ul class="dropdown-menu">
       <li><a href="../location_14_10_31">14.10.31</a></li>
       <li><a href="../location_14_08_23">14.08.23</a></li>
       <li><a href="../location_14_10_30">14.10.30</a></li>
-    </ul>
-    </ul>
+</ul>
+</div>
+</ul>
        
     </nav>
   </div>

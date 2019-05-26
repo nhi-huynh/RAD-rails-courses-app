@@ -43,11 +43,6 @@ ActiveRecord::Schema.define(version: 20190525080438) do
     t.string "description"
   end
 
-  create_table "courses_categories", id: false, force: :cascade do |t|
-    t.integer "course_id", null: false
-    t.integer "category_id", null: false
-  end
-
   create_table "courses_locations", id: false, force: :cascade do |t|
     t.integer "course_id", null: false
     t.integer "location_id", null: false

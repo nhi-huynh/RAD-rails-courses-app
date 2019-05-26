@@ -1,0 +1,94 @@
+<h1>Admin</h1>
+<hr/>
+
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Courses management
+        </button>
+      </h2>
+    </div>
+    <%# @courses.each do |course| %>
+
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Course name</th>
+      <th scope="col">L</th>
+      <th scope="col">H</th>
+      <th scope="col">#</th>
+
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td> <%#= course.name %></td>
+      <td>Otto</td>
+      <td>
+<button type="button"class="btn btn-primary">Edit</button>
+<button type="button"class="btn btn-primary">Delete</button>
+      </td>
+    </tr>
+   
+  </tbody>
+</table>
+          
+          
+          
+          
+</div>
+    </div>
+      <%# end %>
+
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Coordinators management
+        </button>
+      </h2>
+    </div>
+     
+      <%# @coordinators.each do |coordinator| %>
+
+    
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Coordinator name</th>
+      <th scope="col">L</th>
+      <th scope="col">H</th>
+      <th scope="col">#</th>
+
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td> <%#= coordinator.name %></td>
+      <td>Otto</td>
+      <td>
+          
+          <button>Edit</button><button>Delete</button>
+      </td>
+    </tr>
+   
+  </tbody>
+</table>    
+</div>
+    </div>
+      <%# end %>
+
+  </div>
+ 
