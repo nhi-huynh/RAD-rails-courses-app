@@ -1,59 +1,9 @@
 <%@category = Category.find(params[:id]) %>
+<% @courses = @category.courses%>
+<% @courses = @category.courses%>
+<h1>Courses in <%= @category.category %></h1>
 
-<h1>Courses in Category <%= @category.category %></h1>
-<div class="row"> 
-
-<body>
-  <% @category.courses.each do |course| %>
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLLyVTVwNzysJ8B52EOQcrHZbufwBovlsXIR5LUOO69yeBew7jPA" class="img-circle"></image>
-    </div>
-    
-    <div class="col-lg-8 col-md-8 col-sm-12 desc">
-      <div class="card bg-light mb-3" style="max-width: 40rem;">
-    
-        <div class="card-body">
-        <h3 class="card-title"><%= course.name %></h3>   
-        <p class="card-text">
-          <ul>
-            <li>Prerequisite: <%= course.prerequisite %></li>
-            
-            <li> 
-              <strong> Categories: </strong>
-              <% if !course.categories.empty? %>
-                <%= course.categories.collect {|category| link_to( category.category, category)}.join("\t").html_safe %>
-              <% else %>
-                No categories.
-                <%#= link_to "Full Stact Dev", fullStackDev_path%>
-              <% end %>
-            </li>
-            <li> 
-              <strong> Locations: </strong >
-              <% if !course.locations.empty? %>
-                <%= course.locations.collect {|location| link_to( location.location, location)}.join("\t").html_safe %>
-              <% else %>
-                No locations.
-              <% end %>
-              <%#= link_to "14.10.31",location_14_10_31_path%> 
-              <% end %>
-            </li>
-            <li>Created: 5 minutes ago</li>
-          </ul>
-        </p>
-      </div>
-    </div>
-       
-     </div>
-     <div class="row">
-         <div class="col-lg-4 col-md-4 col-sm-12">
-         </div> 
-         <div class="col-lg-8 col-md-8 col-sm-12"><p>Coordinator name:Ali Yavari</p></div>
-     
-     </div>
-  </div>
-  
-  <hr />
-</body>
+<%= render 'courses/courses-coordinators' %>
 
 
 <!--<table>-->
@@ -67,6 +17,8 @@
 <!--      <th colspan="3"></th>-->
 <!--    </tr>-->
 <!--  </thead>-->
+
+
 
 <!--  <tbody>-->
 <!--    <% @category.courses.each do |course| %>-->

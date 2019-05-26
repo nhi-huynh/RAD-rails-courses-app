@@ -1,80 +1,8 @@
+<% @location = Location.find(params[:id]) %>
+<% @courses = @location.courses %>
+
 <h1>Courses scheduled in location <%= @location.location %></h1>
- 
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Courses</a></li>
-    <li><a data-toggle="tab" href="#menu1">Coordinator</a></li>
-  </ul>
-  
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-    
-    <% @courses_hosted.each do |course| %>
-    <div class="row"> 
-      <div class="col-lg-4 col-md-4 col-sm-12">
-        <image src=<%= Coordinator.find(course.coordinator_id).photo_url %> class="img-circle"></image>
-      </div>
-      <div class="col-lg-8 col-md-8 col-sm-12 desc">
-        <div class="card bg-light mb-3" style="max-width: 40rem;">
-          <div class="card-body">
-            <h3 class="card-title">
-              <%= course.name %>
-            </h3>   
-            <p class="card-text">
-              <ul>
-                <li>
-                  Prerequisite:
-                  <%= course.prerequisite %>
-                </li>
-                <li>
-                  <strong> Categories: </strong >
-                  <% if !course.categories.empty? %>
-                    <%= course.categories.collect {|category| link_to( category.category, category)}.join("\t").html_safe %>
-                  <% else %>
-                    No categories.
-                  <% end %>
-                  <%#= link_to "Web Development", webProgram_path%>
-                </li>
-                <li>
-                  <strong> Locations: </strong >
-                  <% if !course.locations.empty? %>
-                    <%= course.locations.collect {|location| link_to( location.location, location)}.join("\t").html_safe %>
-                  <% else %>
-                    No locations.
-                  <% end %>
-                  <%#= link_to "14.10.30", location_14_10_30_path %> 
-                </li>
-                <li>
-                  Created: 8 days ago
-                </li>
-                <div class="col-lg-5  pull-right";> 
-                  <a href="#">
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                  </a>
-                  <span><%= course.likes %></spanp>
-                  <a href="#">
-                    <span class="glyphicon glyphicon-thumbs-down"></span>
-                  </a>
-                  <span><%= course.dislikes %></spanp>
-                </div>
-              </ul>
-            </p>
-          </div>
-        </div>
-     
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-12"></div> 
-          <div class="col-lg-8 col-md-8 col-sm-12">
-            <p>
-              Coordinator name:
-              <%= Coordinator.find(course.coordinator_id).name %> 
-            </p>
-          </div>
-        </div>
-      </div>       
-    </ul>
-  <% end %>
-  <hr />
+<%= render 'courses/courses-coordinators' %>
 
 
 <!--<h1>Courses hosted in <%= @location.location %></h1>-->
@@ -92,7 +20,7 @@
 <!--  </thead>-->
 
 <!--  <tbody>-->
-<!--    <% @courses_hosted.each do |course| %>-->
+<!--    <% @courses.each do |course| %>-->
     <% #@courses.each do |course| %>
 <!--      <tr>-->
 <!--        <td><%= course.name %></td>-->

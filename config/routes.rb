@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :users
   resources :coordinators
   
   resources :courses do
@@ -27,7 +26,8 @@ Rails.application.routes.draw do
   
   # get 'sessions/new'
   # get 'users/new'
-
+  
+  get  '/admin', to: 'application#admin'
   get  '/contact', to: 'application#contact'
   get  '/coordinators',    to: 'coordinator#index'
   get  '/courses',    to: 'courses#index'
