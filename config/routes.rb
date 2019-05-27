@@ -62,4 +62,9 @@ post 'contact-me', to: 'messages#create', as: 'create_message'
   # get  '/signup',  to: 'users#new'
   # post '/signup',  to: 'users#create'
   
+  
+  
+  # make sure this rule is the last one
+  get '*path' => proc { |env| Rails.env.development? ? (raise ActionController::RoutingError, %{No route matches "#{env["PATH_INFO"]}"}) : ApplicationController.action(:render_not_found).call(env) }
+  
 end
