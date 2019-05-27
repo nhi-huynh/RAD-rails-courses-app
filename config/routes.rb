@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  root 'application#home'
+  
   resources :coordinators
   
   resources :courses do
@@ -22,39 +26,24 @@ Rails.application.routes.draw do
     end
   end
   
-  root 'application#home'
+  get  '/signup',  to: 'coordinators#new'
+  post '/signup',  to: 'coordinators#create'
   
-  # get 'sessions/new'
-  # get 'users/new'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
   
   get  '/admin', to: 'application#admin'
   get  '/contact', to: 'application#contact'
+  
   get  '/coordinators',    to: 'coordinator#index'
   get  '/courses',    to: 'courses#index'
   
-
   
 
   
-  # get '/location_14_10_31', to: 'static_pages#location14.10.31'
-  # get '/location_14_10_30', to: 'static_pages#location14.10.30'
-  # get '/location_14_08_23', to: 'static_pages#location14.08.23'
-  
-  # get  '/webProgram',    to: 'static_pages#webProgram'
-  # get  '/fullStackDev',    to: 'static_pages#fullStackDev'
-  # get  '/iosEngineering',    to: 'static_pages#iosEngineering'
 
-  get  '/signup',  to: 'users#new'
-  post '/signup',  to: 'users#create'
-   get    '/login',   to: 'sessions#new'
-   post   '/login',   to: 'sessions#create'
-   delete '/logout',  to: 'sessions#destroy'
   
-  # root 'static_pages#home'
-  # get  '/help',    to: 'static_pages#help'
-  # get  '/about',   to: 'static_pages#about'
-  # get  '/contact', to: 'static_pages#contact'
-  # get  '/signup',  to: 'users#new'
-  # post '/signup',  to: 'users#create'
-  
+  # make sure this rule is the last one
+  get '*path' => proc { |env| Rails.env.development? ? (raise ActionController::RoutingError, %{No route matches "#{env["PATH_INFO"]}"}) : ApplicationController.action(:render_not_found).call(env) }
 end

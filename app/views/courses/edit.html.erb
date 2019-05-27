@@ -1,8 +1,14 @@
-
+<% provide(:title, 'Editing Coordinator') %>
+<% provide(:button_text, 'Update Course Information') %>
 
 <h1>Edit Course</h1>
 
 <%= render 'form-update', course: @course %>
+
+<div class="gravatar_edit">
+      <%= gravatar_for @course %>
+      <a href="http://gravatar.com/emails" target="_blank">change</a>
+</div>
 
 <%= link_to 'Show', @course %> |
 <%= link_to 'Back', courses_path %>

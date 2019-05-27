@@ -1,6 +1,15 @@
+<% provide(:title, 'Editing Coordinator') %>
+<% provide(:button_text, 'Update Profile Information') %>
+
+
 <h1>Editing Coordinator</h1>
 
 <%= render 'form', coordinator: @coordinator %>
+
+<div class="gravatar_edit">
+      <%= gravatar_for @coordinator %>
+      <a href="http://gravatar.com/emails" target="_blank">change</a>
+</div>
 
 <%= link_to 'Show', @coordinator %> |
 <%= link_to 'Back', coordinators_path %>
