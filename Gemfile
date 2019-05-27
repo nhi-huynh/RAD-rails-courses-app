@@ -1,19 +1,5 @@
 source 'https://rubygems.org'
 
-# gem 'rails'
-# gem 'bootstrap-sass'
-# gem 'puma'
-# gem 'sass-rails'
-# gem 'uglifier'
-# gem 'coffee-rails'
-# gem 'jquery-rails'
-# gem 'turbolinks'
-# gem 'jbuilder'
-# gem 'carrierwave'
-# gem "mini_magick"
-# gem "font-awesome-rails"
-# gem 'bcrypt'
-
 gem 'rails',                   '5.1.6'
 gem 'bootstrap-sass',          '3.3.7'
 gem 'puma',                    '3.9.1'

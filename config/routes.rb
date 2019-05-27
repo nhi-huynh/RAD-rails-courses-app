@@ -35,19 +35,7 @@ post 'contact-me', to: 'messages#create', as: 'create_message'
   get  '/coordinators',    to: 'coordinator#index'
   get  '/courses',    to: 'courses#index'
   get  '/admin', to: 'application#admin'
-
-
-
-  
-
-  
-  # get '/location_14_10_31', to: 'static_pages#location14.10.31'
-  # get '/location_14_10_30', to: 'static_pages#location14.10.30'
-  # get '/location_14_08_23', to: 'static_pages#location14.08.23'
-  
-  # get  '/webProgram',    to: 'static_pages#webProgram'
-  # get  '/fullStackDev',    to: 'static_pages#fullStackDev'
-  # get  '/iosEngineering',    to: 'static_pages#iosEngineering'
+  get "/404", to: "errors#not_found"
 
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
@@ -55,11 +43,20 @@ post 'contact-me', to: 'messages#create', as: 'create_message'
    post   '/login',   to: 'sessions#create'
    delete '/logout',  to: 'sessions#destroy'
   
-  # root 'static_pages#home'
-  # get  '/help',    to: 'static_pages#help'
-  # get  '/about',   to: 'static_pages#about'
-  # get  '/contact', to: 'static_pages#contact'
-  # get  '/signup',  to: 'users#new'
-  # post '/signup',  to: 'users#create'
   
+#   CarrierWaveExample::Application.routes.draw do
+#   courses :courses, only: [:index, :newFile, :createFile, :destroyFile]
+#   root "courses#edit"
+# end
+  
+  
+  
+# make sure this rule is the last one
+ 
+# map.connect '*path', :controller => 'application', :action => 'rescue_404' unless ::ActionController::Base.consider_all_requests_local
+
+get '*path' => proc { |env| Rails.env.development? ? (raise ActionController::RoutingError,
+%{No route matches "#{env["PATH_INFO"]}"}) : ApplicationController.action(:render_not_found).call(env) }
+
+
 end

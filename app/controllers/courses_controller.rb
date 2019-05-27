@@ -115,4 +115,31 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:name, :prerequisite, :coordinator_id, :likes, :dislikes)
     end
+    
+  #   def newFile
+  #     @course=Course.newFile
+  #   end
+    
+  #   def createFile
+  #     @course=Course.newFile(course_params)
+  #     if@course.save
+  #       redirect_to courses_path, notice:"this file has been uploaded"
+  #     else
+  #       render"new"
+  #     end
+  #   end
+    
+  #   def destroyFile
+  #     @course = Course.find(params[:id])
+  #     @course.destroy
+  #     redirect_to courses_path, notice:  "The course #{@course.name} has been deleted."
+  #   end
+   
+  # private
+  #     def course_params
+  #     params.require(:course).permit(:name, :attachment)
+  #     end
+    
+    
+    
 end
