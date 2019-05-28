@@ -14,6 +14,8 @@
   </ul>
   <br />
   <% @courses.each do |course| %>
+    <% @coordinator = Coordinator.find(course.coordinator_id) %>
+  
   <div class="container">
     
     <div class="tab-content">
@@ -26,7 +28,7 @@
            <div class="col-lg-8 col-md-8 col-sm-12 desc">
              <div class="card bg-info mb-3" style="max-width: 50rem;">
                <div class="card-body">
-                 <h3 class="card-title"><%= course.name %></h3>   
+                 <h3 class="card-title"><%= link_to course.name, course %></h3>   
                  <p class="card-text">
                  <ul>
                     <p>
@@ -36,7 +38,7 @@
                     <p>
                       <strong> Categories: </strong >
                       <% if !course.categories.empty? %>
-                        <%= course.categories.collect {|category| link_to( category.category, category)}.join("\t").html_safe %>
+                        <%= course.categories.collect {|category| link_to( category.category, courses_category_category_path(category))}.join("\t").html_safe %>
                       <% else %>
                         No categories.
                       <% end %>
@@ -44,7 +46,7 @@
                     <p>
                       <strong> Locations: </strong >
                       <% if !course.locations.empty? %>
-                        <%= course.locations.collect {|location| link_to( location.location, location)}.join("\t").html_safe %>
+                        <%= course.locations.collect {|location| link_to( location.location, courses_hosted_location_path(location))}.join("\t").html_safe %>
                       <% else %>
                         No locations.
                       <% end %>
@@ -77,7 +79,7 @@
             <div class="col-lg-8 col-md-8 col-sm-12">
               <p>
                 Coordinator name: 
-                <%= Coordinator.find(course.coordinator_id).name %>
+                <%= link_to(@coordinator.name,  coordinator_path(@coordinator)) %>
               </p>
             </div>
           </div>

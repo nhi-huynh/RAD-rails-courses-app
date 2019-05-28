@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190525080438) do
+ActiveRecord::Schema.define(version: 20190430070943) do
 
   create_table "categories", force: :cascade do |t|
-    t.string "category"
+    t.string "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,28 +24,26 @@ ActiveRecord::Schema.define(version: 20190525080438) do
   end
 
   create_table "coordinators", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "photo_url"
+    t.string "password_digest", null: false
+    t.boolean "is_admin", default: false
+    t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo_url"
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "name"
-    t.string "prerequisite"
-    t.integer "coordinator_id"
-    t.integer "likes"
-    t.integer "dislikes"
+    t.string "name", null: false
+    t.string "prerequisite", null: false
+    t.string "description", default: "None"
+    t.string "photo_url"
+    t.integer "likes", default: 0
+    t.integer "dislikes", default: 0
+    t.integer "coordinator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "description"
-  end
-
-  create_table "courses_categories", id: false, force: :cascade do |t|
-    t.integer "course_id", null: false
-    t.integer "category_id", null: false
   end
 
   create_table "courses_locations", id: false, force: :cascade do |t|
@@ -54,15 +52,7 @@ ActiveRecord::Schema.define(version: 20190525080438) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string "location", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

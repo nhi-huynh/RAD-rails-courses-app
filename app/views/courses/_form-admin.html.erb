@@ -61,6 +61,12 @@
   </div>
 
   <div class="actions">
-    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <%= form.submit yield(:button_text), class: "btn btn-primary" %>
   </div>
 <% end %>
+
+<div class="gravatar_edit">
+      <image src=<%= @course.photo_url %> class="img-circle"></image>
+      <!--<%= gravatar_for @course.name %>-->
+      <a href="http://gravatar.com/emails" target="_blank">change</a>
+</div>

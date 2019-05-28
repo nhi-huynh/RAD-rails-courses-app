@@ -10,10 +10,15 @@ class Coordinator < ApplicationRecord
     has_many :courses
     
     validates :name,  presence: true, length: { maximum: 50 }
-    VALID_EMAIL_REGEX = /([a-z])+[.]([a-z])+@rmit[.]edu[.]au/
+    
+    SPECIAL_EMAIL =  /[admin]/
+    VALID_EMAIL_REGEX = /[admin]|([a-z])+[.]([a-z])+@rmit[.]edu[.]au/ 
+    
+    
     validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX }, 
-                    uniqueness: { case_sensitive: false }
+                      uniqueness: { case_sensitive: false }
+    
+    validates_format_of :email, :with =>  VALID_EMAIL_REGEX     #SPECIAL_EMAIL ||
 
     validates :password, presence: true, length: { minimum: 6 }, allow_nil: false
 

@@ -1,12 +1,9 @@
 class CoordinatorsController < ApplicationController
-  before_action :logged_in_coordinator, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_coordinator, only: [:edit, :update]
+  before_action :correct_coordinator,   only: [:edit, :update]
   before_action :confirm_admin,     only: :destroy
   before_action :set_coordinator , only: [:show, :edit, :update, :destroy]
   
-  
-  
-
   # GET /coordinators
   # GET /coordinators.json
   def index
@@ -37,8 +34,7 @@ class CoordinatorsController < ApplicationController
     respond_to do |format|
       if @coordinator.save
         log_in @coordinator
-        flash.now[:success] = "Sign up successfully!"
-        remember coordinator
+        remember @coordinator
         format.html { redirect_to @coordinator, notice: 'Coordinator was successfully created.' }
         format.json { render :show, status: :created, location: @coordinator }
       else
@@ -53,7 +49,6 @@ class CoordinatorsController < ApplicationController
   def update
     respond_to do |format|
       if @coordinator.update(coordinator_params)
-        flash.now[:success] = "Profile updated"
         format.html { redirect_to @coordinator, notice: 'Coordinator was successfully updated.' }
         format.json { render :show, status: :ok, location: @coordinator }
       else
@@ -69,7 +64,6 @@ class CoordinatorsController < ApplicationController
   def destroy
     #Coordinator.find(params[:id]).destroy
     @coordinator.destroy
-    flash[:success] = "Coordinator deleted"
     respond_to do |format|
       format.html { redirect_to coordinators_url, notice: 'Coordinator was successfully destroyed.' }
       format.json { head :no_content }

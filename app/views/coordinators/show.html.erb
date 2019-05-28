@@ -18,12 +18,14 @@
            </div>
         
           </div>
+          <hr/>
+         <% @coordinator.courses.each do |course| %>
         <div class="row"> 
            <div class="col-lg-3 col-md-3 col-sm-12">
-           
            </div>
+           
 
-          <% @coordinator.courses.each do |course| %>
+          
             <div class="col-lg-9 col-md-9 col-sm-12 desc">
              <div class="card bg-info mb-3" style="max-width: 45rem;">
                <div class="card-body">
@@ -53,17 +55,27 @@
                     </div>
                     <br/>
 
+                  </ul>
                 </p>
-                </ul>
+                <!--card text-->
+                
               </div>
+              <!--card body-->
             </div>
-                  
+            <!--card-->
+            
+          </div>
+          <!--col-->
         <% end %>
-         
-        </div>
       <hr />
   </div>
+  <!--home-->
+  </div>
+  <!--tab-->
+  </div>
+  <!--container-->
 </body>
+
 
 
 

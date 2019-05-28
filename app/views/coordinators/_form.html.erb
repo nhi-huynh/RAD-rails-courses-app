@@ -1,14 +1,14 @@
 
 
-<%= form_for(@coordinator, url: signup_path) do |f| %>
-<%#= form_for(@coordinator) do |f| %>
+<%= form_for(@coordinator) do |f| %>
+<%#= form_for(@coordinator) do |f|, url: signup_path%>
   <%= render 'shared/error_messages' %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
 
   <%= f.label :email %>
-  <%= f.email_field :email, class: 'form-control' %>
+  <%= f.text_field :email, class: 'form-control' %>
   
   <!--<%= f.label :photo_url, "Confirmation" %>-->
   <!--<%= f.text_field :photo_url, class: 'form-control' %>-->

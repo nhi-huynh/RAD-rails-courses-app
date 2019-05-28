@@ -3,13 +3,16 @@
 
 <h1>Edit Course</h1>
 
-<%= render 'form-update', course: @course %>
 
-<div class="gravatar_edit">
-      <%= gravatar_for @course %>
-      <a href="http://gravatar.com/emails" target="_blank">change</a>
-</div>
-
-<%= link_to 'Show', @course %> |
+<% if current_coordinator.nil? %>
+<% flash.alert = "Please log in to edit course" %>
+<% elsif current_coordinator.is_admin %>
+<%= render 'form-admin', course: @course %>
+<% else %>
+<%= render 'form', course: @course %>
+<%= link_to 'Show', @course %> 
 <%= link_to 'Back', courses_path %>
+<% end %>
+
+
 

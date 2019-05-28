@@ -155,6 +155,16 @@ aside {
   margin-top: 15px;
 }
 
+.photo{
+  width: 100px;
+    height: 100px;
+}
+
+img {
+    width: 50%;
+    height: 50%;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -195,4 +205,6 @@ input {
   width: auto;
   margin-left: 0;
 }
+
+
 // }

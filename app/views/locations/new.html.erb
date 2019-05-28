@@ -1,5 +1,12 @@
 <h1>New Location</h1>
 
+<% if current_coordinator.nil? %>
+<% flash.alert = "Please log in to add new location" %>
+<% else %>
 <%= render 'form', location: @location %>
-
 <%= link_to 'Back', locations_path %>
+<% end %>
+
+
+
+
