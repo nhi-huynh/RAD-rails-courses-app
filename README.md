@@ -3,23 +3,28 @@ This repository hosts the final submission of the course management web applicat
 
 ## Testing - IMPORTANT
 Use admin@rmit.edu.au (password: "password") to test admin functions 
+
 Use andy.song@rmit.edu.au (password: "password") to test normal user functions
 
 ## Achieved aim - MARKING
-This web application achieves all the requirements for the PASS stage (EXCEPT the Voting functions)
-- Home page and proper linking to other pages for guest users
-- Sign up, log in, log out functions for Coordinators
+###This web application achieves all the requirements for the PASS stage (EXCEPT the Voting functions)
+Home page and proper linking to other pages for guest users
 
-This web application achieves all the requirements for the CR stage (EXCEPT the Contact Us page)
-- Update headers and extra functions that are only available once logged in
-- Create/edit/update Categories, Locations, Courses and Coordinators
+Sign up, log in, log out functions for Coordinators
 
-This web application achieves all the requirements for the DI stage (EXCEPT the Upload Avatar function)
-- Friendly redirection for wrong URLs
-- Unauthorised people cannot enter the Course Editing pages
-- A fully functioning Admin Dashboard to manage courses and coordinators
+###This web application achieves all the requirements for the CR stage (EXCEPT the Contact Us page)
+Update headers and extra functions that are only available once logged in
 
-This web application has not attempted any of the requirements for the HD stage.
+Create/edit/update Categories, Locations, Courses and Coordinators
+
+###This web application achieves all the requirements for the DI stage (EXCEPT the Upload Avatar function)
+Friendly redirection for wrong URLs
+
+Unauthorised people cannot enter the Course Editing pages
+
+A fully functioning Admin Dashboard to manage courses and coordinators
+
+###This web application has not attempted any of the requirements for the HD stage.
 
 ## Getting started
 
