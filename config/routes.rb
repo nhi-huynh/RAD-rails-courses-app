@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   # get 'sessions/new'
   # get 'users/new'
   
-  get 'contact-me', to: 'messages#new', as: 'new_message'
+get 'contact-me', to: 'messages#new', as: 'new_message'
 post 'contact-me', to: 'messages#create', as: 'create_message'
 
   get  '/contact', to: 'application#contact'
@@ -37,30 +37,11 @@ post 'contact-me', to: 'messages#create', as: 'create_message'
   get  '/admin', to: 'application#admin'
 
 
-
-  
-
-  
-  # get '/location_14_10_31', to: 'static_pages#location14.10.31'
-  # get '/location_14_10_30', to: 'static_pages#location14.10.30'
-  # get '/location_14_08_23', to: 'static_pages#location14.08.23'
-  
-  # get  '/webProgram',    to: 'static_pages#webProgram'
-  # get  '/fullStackDev',    to: 'static_pages#fullStackDev'
-  # get  '/iosEngineering',    to: 'static_pages#iosEngineering'
-
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
    get    '/login',   to: 'sessions#new'
    post   '/login',   to: 'sessions#create'
    delete '/logout',  to: 'sessions#destroy'
-  
-  # root 'static_pages#home'
-  # get  '/help',    to: 'static_pages#help'
-  # get  '/about',   to: 'static_pages#about'
-  # get  '/contact', to: 'static_pages#contact'
-  # get  '/signup',  to: 'users#new'
-  # post '/signup',  to: 'users#create'
   
   
   

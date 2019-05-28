@@ -10,5 +10,5 @@ class Course < ApplicationRecord
     def unhosted_course
         Location.all - self.locations
     end
-
+   mount_uploader :image, ImageUploader
 end
