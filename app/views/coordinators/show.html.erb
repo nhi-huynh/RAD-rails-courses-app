@@ -14,9 +14,12 @@
            
         
            <div class="col-lg-8 col-md-8 col-sm-12">
+           <div class="photo">
             <image src=<%= @coordinator.photo_url %> class="img-circle"></image>
+           <!--<img src="http://5b0988e595225.cdn.sohucs.com/images/20180903/ed341eea01454921b286b2949e48598e.jpeg" class="img-circle"></img>-->
            </div>
-        
+           <!--photo-->
+          </div>
           </div>
           <hr/>
          <% @coordinator.courses.each do |course| %>
@@ -74,6 +77,7 @@
   <!--tab-->
   </div>
   <!--container-->
+
 </body>
 
 
