@@ -39,7 +39,7 @@
                         <td><%= coordinator.photo_url %></td>
                         <td colspan="2"></th>
                         <td>
-                            <button type="button"class="btn btn-primary"><%= link_to 'Edit', coordinator, method: :update %></button>
+                            <button type="button"class="btn btn-primary"><%= link_to 'Edit',  edit_coordinator_path(coordinator) %></button>
                             <button type="button"class="btn btn-primary"><%= link_to 'Destroy', coordinator, method: :delete, data: { confirm: 'Are you sure?' } %></button>
                         </td>
                     </tr>
@@ -59,7 +59,7 @@
             </h2>
         </div>
 
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
                 <button type="button"class="btn btn-primary"><%= link_to 'New Course', new_course_path %></button>
                 <table class="table">

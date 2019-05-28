@@ -10,7 +10,11 @@ class SessionsController < ApplicationController
         log_in coordinator
         flash.now[:success] = 'Log in successfully'
         params[:session][:remember_me] == '1' ? remember(coordinator) : forget(coordinator)
-        redirect_back_or coordinator
+        if coordinator.is_admin
+          redirect_back_or admin_path
+        else
+          redirect_back_or coordinator
+        end
       # else
       #   message  = "Account not activated. "
       #   message += "Check your email for the activation link."

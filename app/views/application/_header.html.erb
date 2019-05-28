@@ -5,10 +5,12 @@
 <header class="navbar navbar-fixed-top ">
     <div class="container">
         <div id="logo">
-        <% if logged_in? %>
-        <%= link_to "YOUR COURSE", :courses, class: "btn btn-lg btn btn-primary" %>
+        <% if !logged_in?%>
+        <%= link_to "HOME", :root, class: "btn btn-lg btn btn-primary" %>
+        <% elsif logged_in? and current_coordinator.is_admin%>
+        <%= link_to "ADMIN DASHBOARD", admin_path, class: "btn btn-lg btn btn-primary" %>
         <% else %>
-        <%= link_to "YOUR COURSE", :root, class: "btn btn-lg btn btn-primary" %>
+        <%= link_to "YOUR COURSES", :courses, class: "btn btn-lg btn btn-primary" %>
         <% end %>
         </div>
         <nav>
