@@ -1,16 +1,12 @@
-<% provide(:title, 'Editing Coordinator') %>
+<% provide(:title, 'Editing Coordinator Profile') %>
 <% provide(:button_text, 'Update Profile Information') %>
 <% flash[:success] = notice unless notice.nil? %>
 
-<h1>Editing Coordinator</h1>
+<h1>Editing Coordinator Profile</h1>
 
 <%= render 'form', coordinator: @coordinator %>
 
-<div class="gravatar_edit">
-      <image src=<%= @coordinator.photo_url %> class="img-circle"></image>
-      <!--<%= gravatar_for(@coordinator.email) %>-->
-      <a href="http://gravatar.com/emails" target="_blank">change</a>
-</div>
+
 
 <%= link_to 'Show', @coordinator %> |
 <%= link_to 'Back', coordinators_path %>

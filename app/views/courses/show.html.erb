@@ -1,5 +1,7 @@
+<% @coordinator = Coordinator.find(@course.coordinator_id) %>
+
 <h1> <%= @course.name %></h1>
-<p id="notice"><%= notice %></p>
+<p id="notice"><%#= notice %></p>
 <hr/>
 <p>
   <strong>Prerequisite:
@@ -8,7 +10,10 @@
    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+     
+     <% if current_coordinator?(@coordinator) or current_coordinator.is_admin %>
      <button class="btn btn-primary "> <%= link_to 'Edit this course', edit_course_path(@course) %></button>
+     <% end %>
 
 </p>
 <div class="row"> 
@@ -22,7 +27,7 @@
 <p> 
   <strong> Categories: </strong >
   <% if !@course.categories.empty? %>
-    <%= @course.categories.collect {|category| link_to( category.category, category)}.join("\t").html_safe %>
+    <%= @course.categories.collect {|category| link_to( category.category, courses_category_category_url)}.join("\t").html_safe %>
   <% else %>
     No categories.
   <% end %>
@@ -31,7 +36,7 @@
 <p> 
   <strong> Locations: </strong >
   <% if !@course.locations.empty? %>
-    <%= @course.locations.collect {|location| link_to( location.location, location)}.join("\t").html_safe %>
+    <%= @course.locations.collect {|location| link_to( location.location, courses_hosted_location_url)}.join("\t").html_safe %>
   <% else %>
     Not hosted in any locations yet.
   <% end %>
@@ -75,7 +80,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
               <p>
                 Coordinator name: 
-               <%= Coordinator.find(@course.coordinator_id).name %>
+               <%= @coordinator.name %>
               </p>
             </div>
           </div>
@@ -127,5 +132,5 @@
 <!--  <% end %>-->
 <!--</p>-->
 
-<!--<%= link_to 'Edit', edit_course_path(@course) %> |-->
+<!--<%= link_to 'Edit', @course, method: :update %> |-->
 <!--<%= link_to 'Back', courses_path %>-->

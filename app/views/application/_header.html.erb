@@ -5,7 +5,11 @@
 <header class="navbar navbar-fixed-top ">
     <div class="container">
         <div id="logo">
+        <% if logged_in? %>
+        <%= link_to "YOUR COURSE", :courses, class: "btn btn-lg btn btn-primary" %>
+        <% else %>
         <%= link_to "YOUR COURSE", :root, class: "btn btn-lg btn btn-primary" %>
+        <% end %>
         </div>
         <nav>
             <ul class="nav navbar-nav navbar-right">
@@ -17,9 +21,9 @@
                         <% @categories.each do |category| %>
                         <li><%= link_to category.category, courses_category_category_path(category) %></li>
                         <li class="divider"></li>
-                        <% if logged_in? %>
-                        <li><%= link_to "Create category", courses_path %></li>
                         <% end %>
+                        <% if logged_in? %>
+                        <li><%= link_to "Create category", new_category_path %></li>
                         <% end %>
                     </ul>
                 </div>
@@ -34,9 +38,9 @@
                         <% @locations.each do |location| %>
                         <li><%= link_to location.location, courses_hosted_location_path(location) %></li>
                         <li class="divider"></li>
-                        <% if logged_in? %>
-                        <li><%= link_to "Create location", courses_path %></li>
                         <% end %>
+                        <% if logged_in? %>
+                        <li><%= link_to "Create location", new_location_path %></li>
                         <% end %>
                     </ul>
                 </div>

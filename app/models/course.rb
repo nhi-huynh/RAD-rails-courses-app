@@ -16,7 +16,7 @@ class Course < ApplicationRecord
     validates :prerequisite, presence: true, length: { maximum: 255 },
                              format: { with: VALID_STRING_REGEX }
                              
-    validates :description, presence: true, length: { maximum: 800 },
+    validates :description, presence: true, length: { maximum: 1000 },
                             format: { with: VALID_STRING_REGEX } 
 
     validates :likes, length: { maximum: 10}, format: { with: VALID_NUMBER_REGEX } 
@@ -33,7 +33,9 @@ class Course < ApplicationRecord
     
     private
         def create_gravatar
-            self.photo_url = gravatar_for(self.name)
+            gravatar_id = Digest::MD5::hexdigest("random string")
+            gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
+            self.photo_url = gravatar_url
         end
         
 end

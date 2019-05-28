@@ -25,29 +25,21 @@
     <%= form.label :description %>
     <%= form.text_area :description, id: :course_description, cols: "30", rows: "15"  %>
   </div>
-  
-  <!--<div class="field">-->
-  <!--  <%#= form.label :coordinator_id %>-->
-  <!--  <%#= form.select :coordinator_id, Coordinator.all.order(:name).collect {|s| [( s.name), s.id]}%>-->
-    <%#= form.number_field :coordinator_id, id: :course_coordinator_id %>
-  <!--</div>-->
 
   <div class="field">
     <%= form.label :coordinator_id %>
     <%= form.select :coordinator_id, Coordinator.all.order(:name).collect {|s| [( s.name), s.id]}%>
-    <%#= form.number_field :coordinator_id, id: :course_coordinator_id %>
   </div>
   
   <div class="field">
     <%= form.label :category %>
     <%= form.select :category, Category.all.order(:category).collect {|s| [( s.category), s.id]}%>
-    <%#= form.number_field :coordinator_id, id: :course_coordinator_id %>
   </div>
   
   <div class="field">
     <%= form.label :location %>
     <%= form.select :location, Location.all.order(:location).collect {|s| [( s.location), s.id]}%>
-    <%#= form.number_field :coordinator_id, id: :course_coordinator_id %>
+
   </div>
   
   <!--<div class="field">-->
@@ -68,6 +60,6 @@
 
 <div class="gravatar_edit">
       <image src=<%= @course.photo_url %> class="img-circle"></image>
-      <!--<%= gravatar_for @course.name %>-->
+      <!--<%#= gravatar_for @course.name %>-->
       <a href="http://gravatar.com/emails" target="_blank">change</a>
 </div>

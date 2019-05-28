@@ -21,3 +21,9 @@
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
+
+<div class="gravatar_edit">
+      <image src=<%= @coordinator.photo_url %> class="img-circle"></image>
+      <!--<%#= gravatar_for(@coordinator.email) %>-->
+      <a href="http://gravatar.com/emails" target="_blank">change</a>
+</div>

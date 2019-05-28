@@ -73,15 +73,18 @@ class CoordinatorsController < ApplicationController
   # Confirms the correct user.
   def correct_coordinator
     @coordinator = Coordinator.find(params[:id])
-    redirect_to(root_url) unless current_coordinator?(@coordinator)
+    if !current_coordinator?(@coordinator) and !current_coordinator.is_admin?
+      redirect_to(root_url) 
+      flash[:danger] = "You do not have the priviledge to access this page."
+    end
   end
   
     # Confirms a logged-in user.
   def logged_in_coordinator
     unless logged_in?
       store_location
-      flash[:danger] = "Please log in."
       redirect_to login_url
+      flash[:danger] = "Please log in to access this page."
     end
   end
   
@@ -99,6 +102,7 @@ class CoordinatorsController < ApplicationController
     # Confirms an admin user.
     def confirm_admin
       redirect_to(root_url) unless current_coordinator.is_admin?
+      flash[:danger] = "Please log in as admin to access this page."
     end
 end
 

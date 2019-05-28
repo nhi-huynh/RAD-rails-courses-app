@@ -5,6 +5,7 @@ class Location < ApplicationRecord
     VALID_LOCATION_REGEX = /([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})/
     
     validates :location,  presence: true,
-                          format: { with: VALID_LOCATION_REGEX }
+                          format: { with: VALID_LOCATION_REGEX },
+                          uniqueness: { case_sensitive: false }
     
 end
