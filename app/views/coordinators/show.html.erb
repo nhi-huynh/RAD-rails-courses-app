@@ -1,19 +1,104 @@
-<p id="notice"><%= notice %></p>
+<h1>Coordinator: <%= @coordinator.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @coordinator.name %>
-</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @coordinator.email %>
-</p>
+<hr />
+<body>
+  
+  <div class="container">
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <div class="row"> 
+           <div class="col-lg-4 col-md-4 col-sm-12">
+           
+           </div>
+           
+        
+           <div class="col-lg-8 col-md-8 col-sm-12">
+            <image src=<%= @coordinator.photo_url %> class="img-circle"></image>
+           </div>
+        
+          </div>
+          <hr/>
+         <% @coordinator.courses.each do |course| %>
+        <div class="row"> 
+           <div class="col-lg-3 col-md-3 col-sm-12">
+           </div>
+           
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @coordinator.password_digest %>
-</p>
+          
+            <div class="col-lg-9 col-md-9 col-sm-12 desc">
+             <div class="card bg-info mb-3" style="max-width: 45rem;">
+               <div class="card-body">
+                 <br/>
+                 <h3 class="card-title"><%= course.name %></h3>   
+                 <p class="card-text">
+                 <br/>
+                 <ul>
+                   <p><strong>
+                      Course name:</strong>
+                      <%= link_to course.name, course %>
+                    </p>
+                    <p><strong> Created at:</strong>
+                      <%= course.created_at %>
+                    </p>
+                    
+                    
+                    <div class="col-lg-3  pull-right";> 
+                      <a href="#">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                      </a>
+                      <span><%= course.likes %></spanp>
+                      <a href="#">
+                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                      </a>
+                      <span><%= course.dislikes %></spanp>
+                    </div>
+                    <br/>
 
-<%= link_to 'Edit', edit_coordinator_path(@coordinator) %> |
-<%= link_to 'Back', coordinators_path %>
+                  </ul>
+                </p>
+                <!--card text-->
+                
+              </div>
+              <!--card body-->
+            </div>
+            <!--card-->
+            
+          </div>
+          <!--col-->
+        <% end %>
+      <hr />
+  </div>
+  <!--home-->
+  </div>
+  <!--tab-->
+  </div>
+  <!--container-->
+</body>
+
+
+
+
+
+
+
+
+<!--<p id="notice"><%#= notice %></p>-->
+
+<!--<p>-->
+<!--  <strong>Name:</strong>-->
+<!--  <%= @coordinator.name %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Email:</strong>-->
+<!--  <%= @coordinator.email %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Password digest:</strong>-->
+<!--  <%= @coordinator.password_digest %>-->
+<!--</p>-->
+
+<!--<%= link_to 'Edit', edit_coordinator_path(@coordinator) %> |-->
+<!--<%= link_to 'Back', coordinators_path %>-->

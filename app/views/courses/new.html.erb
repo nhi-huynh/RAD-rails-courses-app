@@ -1,5 +1,13 @@
+<% provide(:title, 'New Course') %>
+<% provide(:button_text, 'Create course') %>
+
 <h1>New Course</h1>
 
+<% if current_coordinator.nil? %>
+<% flash.alert = "Please log in to add new course" %>
+<% else %>
 <%= render 'form', course: @course %>
+<% end %>
+
 
 <%= link_to 'Back', courses_path %>

@@ -1,0 +1,31 @@
+<div class="center jumbotron">
+  <h1>Welcome to Your Course App</h1>
+
+  <p style="color:grey;font-size:18px;">
+    This  is  the  home  page  for  the  RAD  the  Assignment 2
+  </p>
+  <%= link_to "Sign up now", signup_path, class: "btn btn-md btn btn-danger glyphicon glyphicon-cog" %>
+</div>
+
+<body>
+    <div class="row">
+        <div class="col-lg-3" >
+            <h4>
+              <strong>View Course as Guest User</strong>
+            </h4>
+            <p style="color:grey;font-size:13px;">
+                <light>Browse and view courses as a guest and sign up later</light>
+            </p>
+            <%= link_to "Browse all courses", courses_path, class: "btn btn-sm btn btn-success 	glyphicon glyphicon-book" %>
+        </div>
+        <div class="col-sm-3" >
+            <h4>
+               <strong>Sign in to your account</strong>
+            </h4>
+            <p style="color:grey;font-size:13px;">
+                <light>Update your courses, rate courses, view coordinator informations</light>
+            </p>
+            <%= link_to "Log in to your account", login_path, class: "btn btn-sm btn btn-success glyphicon glyphicon-list-alt" %>
+        </div>
+    </div>
+</body>

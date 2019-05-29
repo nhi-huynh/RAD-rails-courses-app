@@ -1,0 +1,90 @@
+<body>
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a data-toggle="tab" href="#home">
+        <%= link_to "Courses", courses_path %>
+      </a>
+    </li>
+    
+    <li>
+      <a data-toggle="tab" href="#menu1">
+        <%= link_to "Coordinators", coordinators_path %>
+      </a>
+    </li>
+  </ul>
+  <br />
+  <% @courses.each do |course| %>
+    <% @coordinator = Coordinator.find(course.coordinator_id) %>
+  
+  <div class="container">
+    
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <div class="row"> 
+           <div class="col-lg-4 col-md-4 col-sm-12">
+             <image src=<%= course.coordinator.photo_url %> class="img-circle"></image>
+             
+           </div>
+           <div class="col-lg-8 col-md-8 col-sm-12 desc">
+             <div class="card bg-info mb-3" style="max-width: 50rem;">
+               <div class="card-body">
+                 <h3 class="card-title"><%= link_to course.name, course %></h3>   
+                 <p class="card-text">
+                 <ul>
+                    <p>
+                      <strong>Prerequisite:</strong>
+                      <%= course.prerequisite %>
+                    </p>
+                    <p>
+                      <strong> Categories: </strong >
+                      <% if !course.categories.empty? %>
+                        <%= course.categories.collect {|category| link_to( category.category, courses_category_category_path(category))}.join("\t").html_safe %>
+                      <% else %>
+                        No categories.
+                      <% end %>
+                    </p>
+                    <p>
+                      <strong> Locations: </strong >
+                      <% if !course.locations.empty? %>
+                        <%= course.locations.collect {|location| link_to( location.location, courses_hosted_location_path(location))}.join("\t").html_safe %>
+                      <% else %>
+                        No locations.
+                      <% end %>
+                      <%#= link_to "14.10.31", location_14_10_31_path%> 
+                      <%#= link_to "14.08.23", location_14_08_23_path%> 
+                    </p>
+                    <p>
+                      <strong>Created at:</strong>
+                      <%= course.created_at %>
+                    </p>
+             
+                    <div class="col-lg-3  pull-right";> 
+                      <a href="#">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                      </a>
+                      <span><%= course.likes %></spanp>
+                      <a href="#">
+                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                      </a>
+                      <span><%= course.dislikes %></spanp>
+                    </div>
+                    <br>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12"></div> 
+            <div class="col-lg-8 col-md-8 col-sm-12">
+              <p>
+                Coordinator name: 
+                <%= link_to(@coordinator.name,  coordinator_path(@coordinator)) %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <hr />
+  </div>
+  <% end %>
+</body>

@@ -10,6 +10,7 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    @location = Location.find(params[:id])
   end
 
   # GET /locations/new
@@ -24,11 +25,7 @@ class LocationsController < ApplicationController
   # GET /locations/1/courses_hosted
   def location
     @location = Location.find(params[:id])
-  end
-  
-  def courses_hosted
-    @location = Location.find(params[:id])
-    @courses_hosted = @location.courses
+    @courses = @location.courses
   end
   
   

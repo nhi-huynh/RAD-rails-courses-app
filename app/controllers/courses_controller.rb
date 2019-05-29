@@ -30,23 +30,23 @@ class CoursesController < ApplicationController
 
 
   # POST /courses/1/location_add?location_id=1
-  def course_add
+  def location_add
     #Convert ids from routing to objects
     @course = Course.find(params[:id])
     @location = Location.find(params[:course])
     
     unless @course.hosted_in?(@location)
-      #add course to list using << operator
+      #add location to list using << operator
       @course.locations << @location
       flash[:notice] = "Course was successfully hosted in #{@location.location}"
     else
       flash[:error] = "Course was already hosted in #{@location.location}"
     end
-      redirect_to action: "locations", id: @course
+      #redirect_to action: "locations", id: @course
   end
   
   # POST /courses/1/location_remove?location_id=1
-  def course_remove
+  def location_remove
     #Convert ids from routing to object
     @course = Course.find(params[:id])
     
@@ -65,6 +65,7 @@ class CoursesController < ApplicationController
     redirect_to action: "locations", id: @course
   end
   
+
   # POST /courses
   # POST /courses.json
   def create
@@ -85,6 +86,26 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
+      @course = Course.find(params[:id])
+      location_id = params[:location]
+      if !location_id.nil?
+        location = Location.find(location_id)
+        if @course.hosted_in?(location)
+          @course.locations << location
+        end
+      end
+      
+      category_id = params[:category]
+      if !category_id.nil?
+        category = Category.find(location_id)
+        if @course.belongs_to?(category)
+          @course.categories << category
+        end
+      end
+      
+      course_params.delete(params[:location])
+      course_params.delete(params[:category])
+      
       if @course.update(course_params)
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
@@ -113,6 +134,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :prerequisite, :coordinator_id, :likes, :dislikes)
+      params.require(:course).permit(:name, :prerequisite, :description, :coordinator_id, :likes, :dislikes, :categories, :locations)
     end
 end

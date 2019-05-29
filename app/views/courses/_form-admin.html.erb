@@ -23,40 +23,47 @@
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :course_description, cols: "30", rows: "15"  %>
+    <%= form.text_field :description, id: :course_description %>
   </div>
+  
+  <!--<div class="field">-->
+  <!--  <%#= form.label :coordinator_id %>-->
+  <!--  <%#= form.select :coordinator_id, Coordinator.all.order(:name).collect {|s| [( s.name), s.id]}%>-->
+    <%#= form.number_field :coordinator_id, id: :course_coordinator_id %>
+  <!--</div>-->
 
   <div class="field">
     <%= form.label :coordinator_id %>
     <%= form.select :coordinator_id, Coordinator.all.order(:name).collect {|s| [( s.name), s.id]}%>
+    <%#= form.number_field :coordinator_id, id: :course_coordinator_id %>
   </div>
   
   <div class="field">
     <%= form.label :category %>
     <%= form.select :category, Category.all.order(:category).collect {|s| [( s.category), s.id]}%>
+    <%#= form.number_field :coordinator_id, id: :course_coordinator_id %>
   </div>
   
   <div class="field">
     <%= form.label :location %>
     <%= form.select :location, Location.all.order(:location).collect {|s| [( s.location), s.id]}%>
-
+    <%#= form.number_field :coordinator_id, id: :course_coordinator_id %>
   </div>
   
-  <!--<div class="field">-->
-  <!--  <%#= form.label :likes %>-->
-  <!--  <%#= form.number_field :likes, id: :course_likes %>-->
-  <!--</div>-->
+  <div class="field">
+    <%= form.label :likes %>
+    <%= form.number_field :likes, id: :course_likes %>
+  </div>
 
-  <!--<div class="field">-->
-  <!--  <%#= form.label :dislikes %>-->
-  <!--  <%#= form.number_field :dislikes, id: :course_dislikes %>-->
-  <!--</div>-->
+  <div class="field">
+    <%= form.label :dislikes %>
+    <%= form.number_field :dislikes, id: :course_dislikes %>
+  </div>
 
   <div class="actions">
     <%= form.submit yield(:button_text), class: "btn btn-primary" %>
   </div>
 <% end %>
-
 
 <div class="gravatar_edit">
       <image src=<%= @course.photo_url %> class="img-circle"></image>

@@ -1,0 +1,86 @@
+<% @categories = Category.all %>
+<% @locations = Location.all %>
+
+
+<header class="navbar navbar-fixed-top ">
+    <div class="container">
+        <div id="logo">
+        <% if !logged_in?%>
+        <%= link_to "HOME", :root, class: "btn btn-lg btn btn-primary" %>
+        <% elsif logged_in? and current_coordinator.is_admin%>
+        <%= link_to "ADMIN DASHBOARD", admin_path, class: "btn btn-lg btn btn-primary" %>
+        <% else %>
+        <%= link_to "YOUR COURSES", :courses, class: "btn btn-lg btn btn-primary" %>
+        <% end %>
+        </div>
+        <nav>
+            <ul class="nav navbar-nav navbar-right">
+                <div class="dropdown">
+                    <button class="btn btn-primary btn-md dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-move"></span>Category
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <% @categories.each do |category| %>
+                        <li><%= link_to category.category, courses_category_category_path(category) %></li>
+                        <li class="divider"></li>
+                        <% end %>
+                        <% if logged_in? %>
+                        <li><%= link_to "Create category", new_category_path %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </ul>
+    
+            <ul class="nav navbar-nav navbar-right">
+                <div class="dropdown">
+                    <button class="btn btn-primary btn-md dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-send"></span>Locations
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <% @locations.each do |location| %>
+                        <li><%= link_to location.location, courses_hosted_location_path(location) %></li>
+                        <li class="divider"></li>
+                        <% end %>
+                        <% if logged_in? %>
+                        <li><%= link_to "Create location", new_location_path %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <div class="button">
+                <% if logged_in? %>
+                <% @coordinator = current_coordinator %>     
+                <ul class="nav navbar-nav navbar-right">
+                <div class="btn-group">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle btn btn-danger btn-sm glyphicon glyphicon-move" data-toggle="dropdown">
+                        <%= current_coordinator.name %> </a>
+
+                        <ul class="dropdown-menu">
+                            <li><%= link_to " View Profile", current_coordinator %></li>
+                            <li><%= link_to "Edit Profile", edit_coordinator_path(@coordinator)%></li>
+                            <li class="divider"></li>
+                            <li><%= link_to "Log out", logout_path, method: :delete %></li>
+                        </ul>
+                    </li>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <button type="button"class="btn btn-primary">
+                            <%= link_to "New courses", new_course_path %>
+                        </button>
+                    </ul>
+                <% else %>
+                        <li><%= link_to "Log in", login_path,  class:"btn btn-primary btn-md glyphicon glyphicon-list-alt"%></li>
+                <% end %>
+                </div>
+            </ul>  
+        
+        </nav>
+    </div>
+</header>
+
+<% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert alert-info" %>
+<% end %>

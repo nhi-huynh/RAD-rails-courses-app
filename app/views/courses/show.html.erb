@@ -1,38 +1,136 @@
-<p id="notice"><%= notice %></p>
+<% @coordinator = Coordinator.find(@course.coordinator_id) %>
 
+<h1> <%= @course.name %></h1>
+<p id="notice"><%#= notice %></p>
+<hr/>
 <p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+  <strong>Prerequisite:
+  <%= @course.prerequisite %></strong>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+     
+     <% if current_coordinator?(@coordinator) or current_coordinator.is_admin %>
+     <button class="btn btn-primary "> <%= link_to 'Edit this course', edit_course_path(@course) %></button>
+     <% end %>
 
-<p>
-  <strong>Prerequisite:</strong>
-  <%= @course.prerequisite %>
 </p>
+<div class="row"> 
 
-<p>
-  <strong>Coordinator:</strong>
-  <%= Coordinator.find(@course.coordinator_id).name %>
+<div class="col-lg-8 col-md-8 col-sm-12 desc">
+<div class="card bg-info mb-3" style="max-width: 70rem;">
+<div class="card-body">
+
+<p class="card-text">
+<ul>
+<p> 
+  <strong> Categories: </strong >
+  <% if !@course.categories.empty? %>
+    <%= @course.categories.collect {|category| link_to( category.category, courses_category_category_url)}.join("\t").html_safe %>
+  <% else %>
+    No categories.
+  <% end %>
 </p>
-
-<p>
-  <strong>Likes:</strong>
-  <%= @course.likes %>
-</p>
-
-<p>
-  <strong>Dislikes:</strong>
-  <%= @course.dislikes %>
-</p>
-
+        
 <p> 
   <strong> Locations: </strong >
   <% if !@course.locations.empty? %>
-    <%= @course.locations.collect {|location| link_to( location.location, location)}.join("\t").html_safe %>
+    <%= @course.locations.collect {|location| link_to( location.location, courses_hosted_location_url)}.join("\t").html_safe %>
   <% else %>
     Not hosted in any locations yet.
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<p>
+  <strong>Description:</strong>
+  <p><%= @course.description %></p>
+</p>
+
+<%#= link_to 'Edit', edit_course_path(@course) %>
+<%#= link_to 'Back', courses_path %>
+
+ <div class="col-lg-3  pull-right";> 
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <a href="#">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                      </a>
+                      <span><%= @course.likes %></spanp>
+                      <a href="#">
+                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                      </a>
+                      <span><%= @course.dislikes %></spanp>
+</div>
+<br/>
+
+</p>
+
+</div>
+</div>
+<button class="btn btn-primary"><%= link_to 'Return to course list', courses_path %></button>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-12">
+<!--<image src=<%#= course.coordinator.photo_url %> class="img-circle"></image>-->
+<image src= <%= Coordinator.find(@course.coordinator_id).photo_url %> class="img-circle"></image>
+</div>
+</div>
+<div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12"></div> 
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <p>
+                Coordinator name: 
+               <%= @coordinator.name %>
+              </p>
+            </div>
+          </div>
+</div>
+
+
+<!--<p id="notice"><%= notice %></p>-->
+
+<!--<p>-->
+<!--  <strong>Name:</strong>-->
+<!--  <%= @course.name %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Prerequisite:</strong>-->
+<!--  <%= @course.prerequisite %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Coordinator:</strong>-->
+<!--  <%= Coordinator.find(@course.coordinator_id).name %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Likes:</strong>-->
+<!--  <%= @course.likes %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Dislikes:</strong>-->
+<!--  <%= @course.dislikes %>-->
+<!--</p>-->
+
+<!--<p> -->
+<!--  <strong> Categories: </strong >-->
+<!--  <% if !@course.categories.empty? %>-->
+<!--    <%= @course.categories.collect {|category| link_to( category.category, category)}.join("\t").html_safe %>-->
+<!--  <% else %>-->
+<!--    No categories.-->
+<!--  <% end %>-->
+<!--</p>-->
+        
+<!--<p> -->
+<!--  <strong> Locations: </strong >-->
+<!--  <% if !@course.locations.empty? %>-->
+<!--    <%= @course.locations.collect {|location| link_to( location.location, location)}.join("\t").html_safe %>-->
+<!--  <% else %>-->
+<!--    Not hosted in any locations yet.-->
+<!--  <% end %>-->
+<!--</p>-->
+
+<!--<%= link_to 'Edit', @course, method: :update %> |-->
+<!--<%= link_to 'Back', courses_path %>-->

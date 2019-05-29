@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   
   def courses_hosted
     @category = Category.find(params[:id])
-    @courses_hosted = @category.courses
+    @courses = @category.courses
   end
   
   # POST /categories

@@ -1,6 +1,18 @@
-<h1>Editing Course</h1>
+<% provide(:title, 'Editing Coordinator') %>
+<% provide(:button_text, 'Update Course Information') %>
 
+<h1>Edit Course</h1>
+
+
+<% if current_coordinator.nil? %>
+<% flash.alert = "Please log in to edit course" %>
+<% elsif current_coordinator.is_admin %>
+<%= render 'form-admin', course: @course %>
+<% else %>
 <%= render 'form', course: @course %>
+<!--<%= link_to 'Show', @course %> -->
+<!--<%= link_to 'Back', courses_path %>-->
+<% end %>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+
+

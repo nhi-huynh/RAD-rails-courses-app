@@ -155,6 +155,16 @@ aside {
   margin-top: 15px;
 }
 
+.photo{
+  width: 100px;
+    height: 100px;
+}
+
+img {
+    width: 50%;
+    height: 50%;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -180,6 +190,20 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }
 
 
