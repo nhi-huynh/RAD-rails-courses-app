@@ -45,8 +45,8 @@ Rails.application.routes.draw do
   
 
   
-  # make sure this rule is the last one
-  get '*path' => proc { |env| Rails.env.development? ? (raise ActionController::RoutingError, %{No route matches "#{env["PATH_INFO"]}"}) : ApplicationController.action(:render_not_found).call(env) }
+  # # make sure this rule is the last one
+  # get '*path' => proc { |env| Rails.env.development? ? (raise ActionController::RoutingError, %{No route matches "#{env["PATH_INFO"]}"}) : ApplicationController.action(:render_not_found).call(env) }
 
 
 end
