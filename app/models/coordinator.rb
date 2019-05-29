@@ -76,8 +76,11 @@ class Coordinator < ApplicationRecord
         end
         
         def create_gravatar
-            self.photo_url = gravatar_for(self.email)
+            gravatar_id = Digest::MD5::hexdigest("random string")
+            gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
+            self.photo_url = gravatar_url
         end
+
         
         # Creates and assigns the activation token and digest.
         # def create_activation_digest
