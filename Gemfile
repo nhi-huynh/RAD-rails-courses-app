@@ -15,6 +15,7 @@ source 'https://rubygems.org'
 # gem 'bcrypt'
 
 gem 'rails',                   '5.1.6'
+gem 'sqlite3',                 '1.3.13'
 gem 'bootstrap-sass',          '3.3.7'
 gem 'puma',                    '3.9.1'
 gem 'sass-rails',              '5.0.6'
@@ -27,7 +28,7 @@ gem 'carrierwave',             '1.2.2'
 gem 'mini_magick',             '4.7.0'
 gem "font-awesome-rails"
 gem 'bcrypt',                  '3.1.12'
-gem 'sqlite3',                 '~>1.3.0'
+
 
 # gem 'faker',                   '1.7.3'
 # gem 'will_paginate',           '3.1.6'
