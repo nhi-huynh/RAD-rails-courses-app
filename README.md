@@ -17,20 +17,20 @@ Update headers and extra functions that are only available once logged in
 
 Create/edit/update Categories, Locations, Courses and Coordinators
 
-###This web application achieves all the requirements for the DI stage (EXCEPT the Upload Avatar function)
-Friendly redirection for wrong URLs
+###This web application achieves all the requirements for the 80+ stage (EXCEPT the Upload Avatar function)
+Friendly redirection for wrong URLs (only works in local machine, won't work in the Heroku app)
 
 Unauthorised people cannot enter the Course Editing pages
 
 A fully functioning Admin Dashboard to manage courses and coordinators
 
-###This web application has not attempted any of the requirements for the HD stage.
+###This web application has not attempted any of the requirements for the 90+ stage.
 
 ## Getting started
 
 To get started with the app, clone the repo and then install the needed gems:
 
-$ bundle install --without production
+$ bundle install 
 
 $ bundle update
 
@@ -40,6 +40,8 @@ Next, migrate the database and seed data:
 $ rails db:migrate
 
 $ rails db:reset
+
+$ rails db:seed
 
 Finally, run the test suite to verify that everything is working correctly:
 
