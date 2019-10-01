@@ -25,7 +25,7 @@ gem 'jquery-rails',            '4.3.1'
 gem 'turbolinks',              '5.0.1'
 gem 'jbuilder',                '2.7.0'
 gem 'carrierwave',             '1.2.2'
-gem 'mini_magick',             '4.7.0'
+gem 'mini_magick',             '4.9.4'
 gem "font-awesome-rails"
 gem 'bcrypt',                  '3.1.12'
 
